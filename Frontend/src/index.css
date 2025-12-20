@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* COMPANY NAME ANIMATION — GUARANTEED */
+.slide-left {
+  transform: translateX(-120px);
+  animation: slideLeft 1s ease-out forwards;
+}
+
+.slide-right {
+  transform: translateX(120px);
+  animation: slideRight 1s ease-out forwards;
+}
+
+@keyframes slideLeft {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  to {
+    transform: translateX(0);
+  }
+}
