@@ -1,9 +1,4 @@
 import { motion } from "framer-motion";
-import PhotoStack from "../components/PhotoStack";
-import about1 from "../assets/car.webp";
-import about2 from "../assets/chemical.jpg";
-import about3 from "../assets/waste.jpg";
-import about4 from "../assets/Health-Innovation--800x338.jpeg"
 import Footer from "../components/Footer";
 
 const About = () => {
@@ -11,108 +6,115 @@ const About = () => {
     <div className="bg-white text-black overflow-hidden">
 
       {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-20">
+      <section className="min-h-[60vh] flex flex-col justify-center items-center px-6 md:px-16 text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-extrabold mb-6"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl font-bold mb-4"
         >
           Engineering the Future
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="max-w-3xl text-lg text-gray-700"
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="max-w-2xl text-base text-gray-700"
         >
           Regium Innovations and Research Pvt. Ltd. is a forward-thinking company
-          committed to innovation, technology, and real-world impact.
+          focused on innovation, engineering, and real-world impact.
         </motion.p>
       </section>
 
-      {/* STORY + PHOTO STACK */}
-<section className="px-6 md:px-20 py-32">
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.9 }}
-    className="max-w-4xl mb-16"
-  >
-    <h2 className="text-3xl font-bold mb-4">Who We Are</h2>
-    <p className="text-gray-700 leading-relaxed mb-4">
-      Founded by <strong>Mr. Piyush Kumar</strong>, Regium Innovations and Research
-      Pvt. Ltd. operates at the intersection of science, engineering, and
-      real-world deployment.
-    </p>
-    <p className="text-gray-700 leading-relaxed">
-      We work closely with private industries, government bodies, and innovators
-      to translate research into scalable, sustainable solutions.
-    </p>
-  </motion.div>
+      {/* WHO WE ARE */}
+      <section className="px-6 md:px-16 py-16 flex justify-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
+        >
+          <h2 className="text-2xl font-semibold mb-4">Who We Are</h2>
 
-  {/* FULL WIDTH IMAGE STRIP */}
-  <div className="relative -mx-6 md:-mx-20">
-    <PhotoStack images={[about1, about2, about3, about4]} />
-  </div>
-</section>
+          <p className="text-gray-700 leading-relaxed mb-3">
+            Founded by <strong>Mr. Piyush Kumar</strong>, Regium Innovations and
+            Research Pvt. Ltd. operates at the intersection of science,
+            engineering, and deployment.
+          </p>
 
+          <p className="text-gray-700 leading-relaxed">
+            We collaborate with private industries, government bodies, and
+            innovators to convert research into scalable and sustainable
+            solutions.
+          </p>
+        </motion.div>
+      </section>
 
       {/* FOCUS AREAS */}
-      <section className="bg-white text-black px-6 md:px-20 py-24">
+      <section className="px-6 md:px-16 py-16 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-bold mb-12"
+          transition={{ duration: 0.6 }}
+          className="text-2xl font-semibold mb-10"
         >
-          Our Focused Areas
+          Our Focus Areas
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="flex flex-wrap justify-center gap-6">
           {[
-            "Automobile Modification & Manufacturing",
-            "Chemical Production & Research",
-            "Water Purification & Packaging",
+            "Automobile Manufacturing",
+            "Chemical Research",
+            "Water Purification",
             "Research & Development",
           ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15 }}
-              className="border border-black rounded-xl p-6 hover:bg-black hover:text-white transition-all"
+              transition={{ delay: index * 0.1 }}
+              className="
+                w-57.5
+                border border-black
+                rounded-xl
+                px-5 py-4
+                text-sm
+                font-medium
+                hover:bg-black
+                hover:text-white
+                transition-all
+              "
             >
-              <h3 className="font-semibold text-lg">{item}</h3>
+              {item}
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="px-6 md:px-20 py-24 text-center">
+      <section className="px-6 md:px-16 py-16 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl font-bold mb-6"
+          transition={{ duration: 0.6 }}
+          className="text-2xl font-semibold mb-3"
         >
-          Shaping Industries. Creating Impact.
+          Creating Sustainable Impact
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-gray-700 max-w-2xl mx-auto"
+          transition={{ delay: 0.15 }}
+          className="text-gray-700 max-w-xl mx-auto text-sm"
         >
-          We collaborate with private industries, government bodies, and
-          individuals to deliver efficient, sustainable, and tailored
-          solutions.
+          Partnering with industries and institutions to deliver efficient,
+          sustainable solutions.
         </motion.p>
       </section>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import userSlice from "./userSlice.js"
 const store = configureStore({
     reducer: {
         user: userSlice,
+        
     }
 })
 
