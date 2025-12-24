@@ -14,6 +14,9 @@ const uploadOnCloudinary = async (filePath) => {
     const uploadResult = await cloudinary.uploader.upload(filePath, {
       resource_type: "auto",
     });
+    if (!uploadResult) {
+      throw new Error("Image upload failed");
+    }
 
     if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
 
@@ -24,7 +27,7 @@ const uploadOnCloudinary = async (filePath) => {
   } catch (error) {
     console.error("cloudinary upload error", error);
 
-    if(fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
   }
 };
 
