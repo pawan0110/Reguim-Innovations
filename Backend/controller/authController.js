@@ -135,7 +135,7 @@ export const googleLogin = async (req, res) => {
       });
     }
 
-    const token = generateOtp(user._id);
+    const token = generateToken(user._id);
 
     res.cookie("token", token, {
       httpOnly: true,

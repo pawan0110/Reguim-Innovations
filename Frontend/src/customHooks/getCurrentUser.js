@@ -5,7 +5,7 @@ import { setUserData, setLaoding } from '../redux/userSlice.js'
 import { useEffect } from 'react'
 
 
-const getCurrentUser = () => {
+const useGetCurrentUser = () => {
     const dispatch = useDispatch()
     
     useEffect(() => {
@@ -25,4 +25,4 @@ const getCurrentUser = () => {
     })
 }
 
-export default getCurrentUser
+export default useGetCurrentUser

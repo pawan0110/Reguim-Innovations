@@ -6,14 +6,22 @@ import About from "./Pages/About";
 import Signup from "./Pages/Signup.jsx";
 import Service from "./Pages/Service.jsx";
 import Navbar from "./components/Navbar.jsx";
-import  {Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import AddProduct from "./Pages/addProduct.jsx";
 
-const LayoutWithNavbar = () => (
-  <>
-    <Navbar/>
-    <Outlet/>
-  </>
-)
+import getAllProducts from "./customHooks/getAllProduct.js";
+
+const LayoutWithNavbar = () => {
+  getAllProducts();
+
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+};
+
 function App() {
   return (
     <>
@@ -22,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="service" element={<Service />} />
+          <Route path="/addproduct" element={<AddProduct />} />
         </Route>
 
         <Route path="signup" element={<Signup />} />

@@ -1,27 +1,22 @@
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import api from "../utils/api.js";
-import { setUserData, setLoading } from "../redux/userSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import api from "../utils/api";
+import { setProductData } from "../redux/productSlice";
 
-const useGetCurrentUser = () => {
-    const dispatch = useDispatch();
+const useGetAllProducts = () => {
+  const dispatch = useDispatch();
+  const { productData } = useSelector((state) => state.product);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            dispatch(setLoading(true));
-            try {
-                const result = await api.get("/api/user/getcurrentuser");
-                dispatch(setUserData(result.data));
-            } catch (error) {
-                console.log(error);
-                dispatch(setUserData(null));
-            } finally {
-                dispatch(setLoading(false));
-            }
-        };
+  useEffect(() => {
+    if (productData.length > 0) return;
 
-        fetchUser();
-    }, [dispatch]); 
+    const fetchProducts = async () => {
+      const res = await api.get("/api/product/getallproduct");
+      dispatch(setProductData(res.data.products));
+    };
+
+    fetchProducts();
+  }, [dispatch, productData.length]);
 };
 
-export default useGetCurrentUser;
+export default useGetAllProducts;

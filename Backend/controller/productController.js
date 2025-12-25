@@ -58,7 +58,7 @@ export const getAllProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
     try {
-        const {productId} = req.params.productId;
+        const {productId} = req.params;
         const product = await Product.findById(productId);
 
         if(!product) {
