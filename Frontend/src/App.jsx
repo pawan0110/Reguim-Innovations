@@ -12,9 +12,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import getAllProducts from "./customHooks/getAllProduct.js";
+import useGetCurrentUser from "./customHooks/getCurrentUser.js";
 
 const LayoutWithNavbar = () => {
   getAllProducts();
+  useGetCurrentUser();
 
   return (
     <>

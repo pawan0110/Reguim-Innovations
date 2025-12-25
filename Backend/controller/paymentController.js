@@ -16,6 +16,10 @@ export const createOrder = async (req, res) => {
   try {
     const { productId } = req.body;
 
+    if (!productId) {
+      return res.status(400).json({ message: "Product ID is required" });
+    }
+
     const product = await Product.findById(productId);
     if (!product)
       return res.status(404).json({ message: "Product not found" });
@@ -29,8 +33,8 @@ export const createOrder = async (req, res) => {
     const order = await razorpayInstance.orders.create(options);
     res.status(200).json(order);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Order creation failed" });
+    console.error("Order creation error:", error.message);
+    res.status(500).json({ message: "Order creation failed", error: error.message });
   }
 };
 
@@ -74,7 +78,7 @@ export const verifyPayment = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Payment verified and enrollment successful" });
+      .json({ message: "Payment verified" });
   } catch (error) {
     console.log(error);
     return res
