@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import getAllProducts from "./customHooks/getAllProduct.js";
 import useGetCurrentUser from "./customHooks/getCurrentUser.js";
+import Profile from "./Pages/Profile.jsx";
 
 const LayoutWithNavbar = () => {
   getAllProducts();
@@ -36,6 +37,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="service" element={<Service />} />
           <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
 
         <Route path="signup" element={<Signup />} />
