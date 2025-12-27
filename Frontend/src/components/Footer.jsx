@@ -52,12 +52,12 @@ const Footer = () => {
             </a>
             
             <a
-              href="https://www.linkedin.com/in/pawan-kumar0075"
+              href="https://github.com/kamat-abhi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-sky-500 hover:scale-110  transition-colors duration-300 text-2xl"
             >
-              <FaLinkedin />
+                <FaGithub />
             </a>
           </div>
         </div>
