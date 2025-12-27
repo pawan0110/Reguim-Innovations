@@ -14,12 +14,12 @@ const userSchema = new mongoose.Schema(
       index: true,
     },
 
-      myProduct: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:"Product",
-        }
-      ],
+    myProduct: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
     googleId: {
       type: String,
       unique: true,
@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema(
     },
     lastLoginAt: {
       type: Date,
+    },
+    profilePic: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }
