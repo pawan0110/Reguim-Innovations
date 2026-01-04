@@ -18,13 +18,13 @@ const useGetCurrentUser = () => {
                 dispatch(setUserData(result.data));
             } catch (error) {
                 console.log(error);
-                // Don't clear userData on error, just log it
+
             } finally {
                 dispatch(setLoading(false));
             }
         }
             fetchUser()
-        }, [dispatch, userData])
+        },[])
 }
 
 export default useGetCurrentUser
