@@ -42,6 +42,18 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
+app.get("/__env_check", (req, res) => {
+  const checks = {
+    MONGODB_URL: !!process.env.MONGODB_URL,
+    JWT_SECRET: !!process.env.JWT_SECRET,
+    EMAIL_USER: !!process.env.EMAIL_USER,
+    CLOUDINARY_CLOUD_NAME: !!process.env.CLOUDINARY_CLOUD_NAME,
+    RAZORPAY_KEY_ID: !!process.env.RAZORPAY_KEY_ID,
+    PORT: !!process.env.PORT,
+    NODE_ENV: process.env.NODE_ENV || null,
+  };
+  res.json(checks);
+});
 
 
 // 5. Standard Middlewares
