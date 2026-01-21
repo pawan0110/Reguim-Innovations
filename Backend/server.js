@@ -19,10 +19,10 @@ const app = express();
 // 3. CORS Configuration
 
 const allowedOrigins = [
-  "http://localhost:5173", 
+  "http://localhost:5173",
   "http://localhost:5174",
-  "https://reguim-innovations.vercel.app/"
-   
+  "https://reguim-innovations.vercel.app",
+  "https://reguim-innovations.onrender.com"
 ];
 
 const corsOptions = {
