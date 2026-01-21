@@ -11,52 +11,36 @@ The objective of Regium Innovations is to establish a scalable foundation for de
 Key Features
 
 Modern, responsive, and user-friendly interface
-
 Secure authentication using JSON Web Tokens (JWT)
-
 Cloud-based media storage and management
-
 Integrated email services
-
 Online payment gateway integration
-
 Admin-level access control
-
 Environment-based configuration for enhanced security
-
 Production-ready deployment architecture
 
-Technology Stack
+Technology Stack:
+
 Frontend
 
 React (Vite)
-
 Tailwind CSS
-
 Firebase services
-
 Razorpay integration
 
 Backend
 
 Node.js
-
 Express.js
-
 MongoDB
-
 JWT Authentication
-
 Cloudinary
-
 Nodemailer
-
 Razorpay API
 
 Deployment & Infrastructure
 
 Frontend: Vercel
-
 Backend: Cloud-hosted server environment
 
 Database: MongoDB Atlas
@@ -107,13 +91,9 @@ Prerequisites
 Node.js (version 16 or later)
 
 npm or yarn package manager
-
 MongoDB Atlas account
-
 Razorpay account
-
 Cloudinary account
-
 Firebase project
 
 Clone the Repository
