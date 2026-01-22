@@ -14,7 +14,7 @@ const Service = () => {
   useGetAllProducts();
   const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
 
- const loadRazorpayScript = () => {
+const loadRazorpayScript = () => {
   return new Promise((resolve, reject) => {
     if (window.Razorpay) return resolve(true);
 
@@ -26,19 +26,21 @@ const Service = () => {
   });
 };
 
- const handleBuy = async (productId, userId) => {
+const handleBuy = async (productId, userId) => {
   try {
-    // 1. Load Razorpay SDK
-    await loadRazorpayScript();
+    const sdkLoaded = await loadRazorpayScript();
+    if (!sdkLoaded) {
+      toast.error("Razorpay SDK failed to load");
+      return;
+    }
 
-    // 2. Create order on backend
+    // Create order
     const orderRes = await api.post("/api/payment/create-order", {
       productId,
     });
 
     const { id, amount } = orderRes.data;
 
-    // 3. Razorpay options
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount,
@@ -49,22 +51,30 @@ const Service = () => {
 
       handler: async function (response) {
         try {
-          const verifyRes = await api.post(
-            "/api/payment/verify-payment",
-            {
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_signature: response.razorpay_signature,
-              productId,
-              userId,
-            }
-          );
+          await api.post("/api/payment/verify-payment", {
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+            productId,
+            userId,
+          });
 
-          toast.success("payment successful");
+          toast.success("Payment successful");
         } catch (error) {
-          toast.error("Payment verification failed");
           console.error(error);
+          toast.error("Payment verification failed");
         }
+      },
+
+      prefill: {
+        name: "Test User",
+        email: "test@example.com",
+      },
+
+      modal: {
+        ondismiss: function () {
+          toast.info("Payment cancelled");
+        },
       },
 
       theme: {
@@ -72,18 +82,20 @@ const Service = () => {
       },
     };
 
-    if (!window.Razorpay) {
-      toast.error("Razorpay SDK not available");
-      return;
-    }
-
     const rzp = new window.Razorpay(options);
+
+    rzp.on("payment.failed", function (response) {
+      console.error(response.error);
+      toast.error("Payment failed");
+    });
+
     rzp.open();
   } catch (error) {
-    toast.error("Something went wrong while processing payment");
     console.error("Payment Error:", error);
+    toast.error("Something went wrong while processing payment");
   }
 };
+
 
 
   return (
