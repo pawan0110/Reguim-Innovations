@@ -174,3 +174,12 @@ export const googleLogin = async (req, res) => {
     return res.status(500).json({ message: `Google login error: ${error}` });
   }
 };
+
+export const logout = async (req, res) => {
+  try {
+    await res.clearCookie("token");
+    return res.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    return res.status(500).json({ message: `Logout error: ${error}` });
+  }
+};
